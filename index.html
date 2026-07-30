@@ -5,18 +5,173 @@
 <title>Predicting the Next Corporate Screw Up – Executive Landing Page</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
+  :root {
+    --bg: #0A0A0A;
+    --panel: #111111;
+    --panel-2: #171717;
+    --panel-3: #1E1E1E;
+    --text: #D5D5D5;
+    --heading: #C17F45;
+    --copper: #B87333;
+    --copper-soft: #D0A16B;
+    --copper-deep: #8A4A14;
+  }
+
   @layer base {
-    body { font-family: 'Inter', system-ui, sans-serif; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(184,115,51,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,115,51,0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: radial-gradient(circle at center, black 30%, transparent 85%);
+      opacity: 0.35;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(184,115,51,0.16), transparent 30%), radial-gradient(circle at bottom right, rgba(184,115,51,0.14), transparent 35%);
+      z-index: -1;
+    }
   }
+
   .gradient-bg {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    background: transparent !important;
   }
+
   .card-hover {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
+
   .card-hover:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 0 0 1px rgba(184,115,51,0.24), 0 20px 45px rgba(0,0,0,0.38);
+    border-color: rgba(184,115,51,0.55) !important;
+  }
+
+  .metal-panel {
+    background: linear-gradient(135deg, rgba(20,20,20,0.96), rgba(12,12,12,0.98));
+    border: 1px solid rgba(184,115,51,0.35);
+    box-shadow: inset 0 0 24px rgba(184,115,51,0.08), 0 0 28px rgba(0,0,0,0.28);
+    backdrop-filter: blur(10px);
+  }
+
+  .metal-border {
+    border-color: rgba(184,115,51,0.4) !important;
+  }
+
+  .copper-btn {
+    background: linear-gradient(135deg, var(--copper) 0%, var(--copper-soft) 50%, var(--copper-deep) 100%) !important;
+    color: #111111 !important;
+    border: 1px solid rgba(255,230,205,0.45) !important;
+    box-shadow: 0 0 18px rgba(184,115,51,0.22);
+    text-shadow: none;
+  }
+
+  .copper-btn:hover {
+    filter: brightness(1.08);
+  }
+
+  .risk-ledger-shell {
+    background: linear-gradient(135deg, rgba(24,19,15,0.95), rgba(10,10,10,0.95));
+    border: 1px solid rgba(184,115,51,0.55);
+    box-shadow: inset 0 0 24px rgba(184,115,51,0.12), 0 0 34px rgba(184,115,51,0.14);
+  }
+
+  .risk-ledger-shell .copper-accent {
+    color: var(--heading) !important;
+    border-color: rgba(184,115,51,0.38) !important;
+  }
+
+  .bar-chart .bar {
+    background: linear-gradient(180deg, var(--copper-soft), var(--copper));
+    border: 1px solid rgba(255,232,205,0.45);
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.16);
+  }
+
+  .compliance-scale {
+    background: linear-gradient(90deg, rgba(184,115,51,0.28), rgba(184,115,51,0.68));
+    border: 1px solid rgba(184,115,51,0.48);
+  }
+
+  .compliance-thumb {
+    background: radial-gradient(circle at 30% 30%, #E3B57F, var(--copper));
+    border: 1px solid rgba(255,233,205,0.6);
+    box-shadow: 0 0 0 3px rgba(208,161,107,0.22);
+  }
+
+  body h1,
+  body h2,
+  body h3,
+  body h4 {
+    color: var(--heading) !important;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 12px rgba(184,115,51,0.16);
+  }
+
+  body p,
+  body li,
+  body span,
+  body a,
+  body input,
+  body button {
+    color: var(--text) !important;
+  }
+
+  body .bg-slate-900,
+  body .bg-slate-800,
+  body .bg-slate-700,
+  body .bg-slate-600 {
+    background-color: var(--panel) !important;
+  }
+
+  body .text-gray-100,
+  body .text-gray-200,
+  body .text-gray-300,
+  body .text-gray-400,
+  body .text-gray-500 {
+    color: var(--text) !important;
+  }
+
+  body .text-teal-300,
+  body .text-teal-400,
+  body .text-teal-200,
+  body .text-amber-300,
+  body .text-amber-500,
+  body .text-amber-600 {
+    color: var(--heading) !important;
+  }
+
+  body .border-slate-700,
+  body .border-slate-600,
+  body .border-slate-800 {
+    border-color: rgba(184,115,51,0.38) !important;
+  }
+
+  body .bg-teal-600,
+  body .bg-teal-500,
+  body .bg-teal-900,
+  body .bg-amber-600,
+  body .bg-amber-500,
+  body .bg-amber-900 {
+    background: linear-gradient(135deg, var(--copper) 0%, var(--copper-soft) 50%, var(--copper-deep) 100%) !important;
+    color: #111111 !important;
+    border-color: rgba(255,230,205,0.45) !important;
   }
 </style>
 </head>
@@ -64,22 +219,22 @@
 </section>
 
 <!-- Executive Summary & Core Methodology -->
-<section class="py-16 bg-slate-800">
+<section class="py-16">
   <div class="container mx-auto px-6 md:px-12">
-    <h2 class="text-3xl font-bold text-center mb-8 text-amber-300">Executive Summary &amp; Core Methodology</h2>
+    <h2 class="text-3xl font-bold text-center mb-8">Executive Summary &amp; Core Methodology</h2>
     <div class="grid md:grid-cols-2 gap-8">
-      <div class="bg-slate-700 p-6 rounded-lg shadow-lg">
-        <h3 class="text-xl font-semibold mb-4 text-teal-200">Family‑Weighted Power Ranking</h3>
-        <p class="text-gray-300 leading-relaxed">
+      <div class="metal-panel p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-4 copper-accent">Family‑Weighted Power Ranking</h3>
+        <p class="leading-relaxed">
           <strong>Power Score</strong> = Total Mentions × (Distinct Families)<sup>1.5</sup>
         </p>
-        <p class="mt-4 text-gray-400">
+        <p class="mt-4">
           This algorithm amplifies signals that appear across multiple architectural families, mitigating the risk of single‑family echo chambers and surfacing genuine compliance vulnerabilities.
         </p>
       </div>
-      <div class="bg-slate-700 p-6 rounded-lg shadow-lg">
-        <h3 class="text-xl font-semibold mb-4 text-teal-200">Why It Matters</h3>
-        <ul class="list-disc list-inside text-gray-300 space-y-2">
+      <div class="metal-panel p-6 rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-4 copper-accent">Why It Matters</h3>
+        <ul class="list-disc list-inside space-y-2">
           <li>Identifies cross‑model litigation precursors before they surface in courts.</li>
           <li>Provides a unified risk ledger for legal, compliance, and product teams.</li>
           <li>Enables proactive mitigation strategies across the AI ecosystem.</li>
@@ -90,68 +245,68 @@
 </section>
 
 <!-- Visualizations & Analytical Findings Preview -->
-<section class="py-16 bg-slate-900">
+<section class="py-16">
   <div class="container mx-auto px-6 md:px-12">
-    <h2 class="text-3xl font-bold text-center mb-8 text-amber-300">Analytical Modules Preview</h2>
+    <h2 class="text-3xl font-bold text-center mb-8">Analytical Modules Preview</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="bg-slate-800 p-5 rounded-lg card-hover">
-        <h4 class="text-lg font-medium mb-2 text-teal-300">Regulatory Blindspot Analysis</h4>
-        <p class="text-gray-400 text-sm">Pre‑Review vs. Active Litigation trends</p>
+      <div class="metal-panel p-5 rounded-lg card-hover">
+        <h4 class="text-lg font-medium mb-2 copper-accent">Regulatory Blindspot Analysis</h4>
+        <p class="text-sm">Pre‑Review vs. Active Litigation trends</p>
       </div>
-      <div class="bg-slate-800 p-5 rounded-lg card-hover">
-        <h4 class="text-lg font-medium mb-2 text-teal-300">Architectural Dissent Index</h4>
-        <p class="text-gray-400 text-sm">Inter‑Family Divergence metrics</p>
+      <div class="metal-panel p-5 rounded-lg card-hover">
+        <h4 class="text-lg font-medium mb-2 copper-accent">Architectural Dissent Index</h4>
+        <p class="text-sm">Inter‑Family Divergence metrics</p>
       </div>
-      <div class="bg-slate-800 p-5 rounded-lg card-hover">
-        <h4 class="text-lg font-medium mb-2 text-teal-300">Statutory Vector Clustering</h4>
-        <p class="text-gray-400 text-sm">Copyright Act, BIPA, FTC Act patterns</p>
+      <div class="metal-panel p-5 rounded-lg card-hover">
+        <h4 class="text-lg font-medium mb-2 copper-accent">Statutory Vector Clustering</h4>
+        <p class="text-sm">Copyright Act, BIPA, FTC Act patterns</p>
       </div>
-      <div class="bg-slate-800 p-5 rounded-lg card-hover">
-        <h4 class="text-lg font-medium mb-2 text-teal-300">Tripartite Network Topology</h4>
-        <p class="text-gray-400 text-sm">Models – Platforms – Statutes connections</p>
+      <div class="metal-panel p-5 rounded-lg card-hover">
+        <h4 class="text-lg font-medium mb-2 copper-accent">Tripartite Network Topology</h4>
+        <p class="text-sm">Models – Platforms – Statutes connections</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Master Resource & Link Hub -->
-<section class="py-16 bg-slate-800">
+<section class="py-16">
   <div class="container mx-auto px-6 md:px-12">
-    <h2 class="text-3xl font-bold text-center mb-8 text-amber-300">Front Door – All Project Artifacts</h2>
+    <h2 class="text-3xl font-bold text-center mb-8">Front Door – All Project Artifacts</h2>
     <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
-      <a href="https://www.kaggle.com/datasets/gastondana/ai-litigation-and-corporate-deception-risk-ledger" target="_blank" rel="noopener noreferrer" class="bg-slate-700 p-6 rounded-lg text-center hover:bg-slate-600 transition-colors card-hover">
-        <h4 class="text-lg font-semibold text-teal-200 mb-2">Kaggle Dataset</h4>
-        <p class="text-gray-400 text-sm">AI Litigation &amp; Corporate Deception Risk Ledger</p>
+      <a href="https://www.kaggle.com/datasets/gastondana/ai-litigation-and-corporate-deception-risk-ledger" target="_blank" rel="noopener noreferrer" class="metal-panel p-6 rounded-lg text-center transition-colors card-hover">
+        <h4 class="text-lg font-semibold mb-2 copper-accent">Kaggle Dataset</h4>
+        <p class="text-sm">AI Litigation &amp; Corporate Deception Risk Ledger</p>
       </a>
-      <a href="https://www.kaggle.com/code/gastondana/predicting-the-next-corporate-screw-up" target="_blank" rel="noopener noreferrer" class="bg-slate-700 p-6 rounded-lg text-center hover:bg-slate-600 transition-colors card-hover">
-        <h4 class="text-lg font-semibold text-teal-200 mb-2">Kaggle Meta‑Analysis Notebook</h4>
-        <p class="text-gray-400 text-sm">Full reproducible analysis</p>
+      <a href="https://www.kaggle.com/code/gastondana/predicting-the-next-corporate-screw-up" target="_blank" rel="noopener noreferrer" class="metal-panel p-6 rounded-lg text-center transition-colors card-hover">
+        <h4 class="text-lg font-semibold mb-2 copper-accent">Kaggle Meta‑Analysis Notebook</h4>
+        <p class="text-sm">Full reproducible analysis</p>
       </a>
-      <a href="https://github.com/gastondana627/Predicting-the-Next-Corporate-Screw-Up" target="_blank" rel="noopener noreferrer" class="bg-slate-700 p-6 rounded-lg text-center hover:bg-slate-600 transition-colors card-hover">
-        <h4 class="text-lg font-semibold text-teal-200 mb-2">GitHub Repository</h4>
-        <p class="text-gray-400 text-sm">Predicting-the-Next-Corporate-Screw-Up</p>
+      <a href="https://github.com/gastondana627/Predicting-the-Next-Corporate-Screw-Up" target="_blank" rel="noopener noreferrer" class="metal-panel p-6 rounded-lg text-center transition-colors card-hover">
+        <h4 class="text-lg font-semibold mb-2 copper-accent">GitHub Repository</h4>
+        <p class="text-sm">Predicting-the-Next-Corporate-Screw-Up</p>
       </a>
-      <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&user=juOv0f0AAAAJ" target="_blank" rel="noopener noreferrer" class="bg-slate-700 p-6 rounded-lg text-center hover:bg-slate-600 transition-colors card-hover">
-        <h4 class="text-lg font-semibold text-teal-200 mb-2">Google Scholar</h4>
-        <p class="text-gray-400 text-sm">Gaston J. Dana – Research Profile &amp; Citations</p>
+      <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&user=juOv0f0AAAAJ" target="_blank" rel="noopener noreferrer" class="metal-panel p-6 rounded-lg text-center transition-colors card-hover">
+        <h4 class="text-lg font-semibold mb-2 copper-accent">Google Scholar</h4>
+        <p class="text-sm">Gaston J. Dana – Research Profile &amp; Citations</p>
       </a>
-      <a href="https://github.com/gastondana627/Predicting-the-Next-Corporate-Screw-Up" target="_blank" rel="noopener noreferrer" class="bg-slate-700 p-6 rounded-lg text-center hover:bg-slate-600 transition-colors card-hover">
-        <h4 class="text-lg font-semibold text-teal-200 mb-2">Enterprise Workspace Export</h4>
-        <p class="text-gray-400 text-sm">Proposals &amp; Integration Guides</p>
+      <a href="https://github.com/gastondana627/Predicting-the-Next-Corporate-Screw-Up" target="_blank" rel="noopener noreferrer" class="metal-panel p-6 rounded-lg text-center transition-colors card-hover">
+        <h4 class="text-lg font-semibold mb-2 copper-accent">Enterprise Workspace Export</h4>
+        <p class="text-sm">Proposals &amp; Integration Guides</p>
       </a>
     </div>
   </div>
 </section>
 
 <!-- Footer -->
-<footer class="bg-slate-900 py-8">
-  <div class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center text-gray-400">
-    <p class="text-sm">&copy; 2026 Gaston Dana. All rights reserved. | Research Profile: <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&user=juOv0f0AAAAJ" target="_blank" rel="noopener noreferrer" class="text-teal-300 hover:underline">Google Scholar</a></p>
+<footer class="py-8">
+  <div class="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center">
+    <p class="text-sm">&copy; 2026 Gaston Dana. All rights reserved. | Research Profile: <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&user=juOv0f0AAAAJ" target="_blank" rel="noopener noreferrer" class="hover:underline">Google Scholar</a></p>
     <div class="flex space-x-4 mt-4 md:mt-0">
-      <a href="https://www.kaggle.com/datasets/gastondana/ai-litigation-and-corporate-deception-risk-ledger" target="_blank" rel="noopener noreferrer" class="hover:text-teal-300 transition-colors text-sm">Home</a>
-      <a href="https://www.kaggle.com/code/gastondana/predicting-the-next-corporate-screw-up" target="_blank" rel="noopener noreferrer" class="hover:text-teal-300 transition-colors text-sm">Metrics</a>
-      <a href="https://github.com/gastondana627/Predicting-the-Next-Corporate-Screw-Up" target="_blank" rel="noopener noreferrer" class="hover:text-teal-300 transition-colors text-sm">Methodology</a>
-      <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AO4B3juZtPhl2b6dz8JEDOryCvSz0bLrTPzlrYr7IXboAk5J03FHQGUC61A8kctCvwWIroA7DuHvrSHYJS57Dg&user=juOv0f0AAAAJ" target="_blank" rel="noopener noreferrer" class="hover:text-teal-300 transition-colors text-sm">Resources</a>
+      <a href="https://www.kaggle.com/datasets/gastondana/ai-litigation-and-corporate-deception-risk-ledger" target="_blank" rel="noopener noreferrer" class="hover:underline transition-colors text-sm">Home</a>
+      <a href="https://www.kaggle.com/code/gastondana/predicting-the-next-corporate-screw-up" target="_blank" rel="noopener noreferrer" class="hover:underline transition-colors text-sm">Metrics</a>
+      <a href="https://github.com/gastondana627/Predicting-the-Next-Corporate-Screw-Up" target="_blank" rel="noopener noreferrer" class="hover:underline transition-colors text-sm">Methodology</a>
+      <a href="https://scholar.google.com/citations?hl=en&view_op=list_works&gmla=AO4B3juZtPhl2b6dz8JEDOryCvSz0bLrTPzlrYr7IXboAk5J03FHQGUC61A8kctCvwWIroA7DuHvrSHYJS57Dg&user=juOv0f0AAAAJ" target="_blank" rel="noopener noreferrer" class="hover:underline transition-colors text-sm">Resources</a>
     </div>
   </div>
 </footer>
@@ -160,38 +315,38 @@
 <!-- GLITCH SUIT ROBOT CHATBOT WIDGET          -->
 <!-- ========================================== -->
 <div class="fixed bottom-6 right-6 z-50">
-  <button id="chat-toggle" class="relative group bg-slate-800 hover:bg-slate-700 border-2 border-teal-500/50 text-teal-300 p-3.5 rounded-full shadow-2xl transition-all duration-300 flex items-center justify-center hover:scale-105 cursor-pointer">
+  <button id="chat-toggle" class="relative group copper-btn border-2 p-3.5 rounded-full shadow-2xl transition-all duration-300 flex items-center justify-center hover:scale-105 cursor-pointer">
     <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M4 11h16m-2 4h.01M6 15h.01M7 21h10a2 2 0 002-2v-7a2 2 0 00-2-2H7a2 2 0 00-2 2v7a2 2 0 002 2zm3-13h4a1 1 0 011 1v1H9V9a1 1 0 011-1z" />
-      <path d="M12 12l1 4-2 2" stroke="#f59e0b" stroke-width="2"/>
+      <path d="M12 12l1 4-2 2" stroke="#111111" stroke-width="2"/>
     </svg>
-    <span class="absolute -top-1 -right-1 bg-amber-500 text-slate-950 text-xs font-bold px-1.5 py-0.5 rounded-full animate-pulse">AI</span>
+    <span class="absolute -top-1 -right-1 bg-[#111111] text-[#E9C08D] text-xs font-bold px-1.5 py-0.5 rounded-full animate-pulse border border-[#C17F45]">AI</span>
   </button>
 
-  <div id="chat-window" class="hidden absolute bottom-16 right-0 w-80 sm:w-96 bg-slate-900 border border-slate-700 rounded-xl shadow-2xl flex flex-col overflow-hidden transition-all duration-300">
-    <div class="bg-gradient-to-r from-slate-800 to-slate-900 px-4 py-3 border-b border-slate-700 flex justify-between items-center">
+  <div id="chat-window" class="hidden absolute bottom-16 right-0 w-80 sm:w-96 metal-panel rounded-xl shadow-2xl flex flex-col overflow-hidden transition-all duration-300">
+    <div class="px-4 py-3 border-b flex justify-between items-center" style="border-color: rgba(184,115,51,0.4);">
       <div class="flex items-center space-x-2">
-        <div class="w-3 h-3 bg-teal-400 rounded-full animate-ping"></div>
-        <span class="font-semibold text-teal-300 text-sm">RiskBot v1.0 (Tie: Crooked)</span>
+        <div class="w-3 h-3 rounded-full animate-ping" style="background: linear-gradient(135deg, #D0A16B, #B87333);"></div>
+        <span class="font-semibold text-sm" style="color: var(--heading);">RiskBot v1.0 (Tie: Crooked)</span>
       </div>
-      <button id="chat-close" class="text-gray-400 hover:text-white text-lg font-bold px-1.5 cursor-pointer">&times;</button>
+      <button id="chat-close" class="text-lg font-bold px-1.5 cursor-pointer" style="color: var(--heading);">&times;</button>
     </div>
 
-    <div id="chat-messages" class="p-4 h-80 overflow-y-auto space-y-3 text-sm text-gray-300 flex flex-col">
-      <div class="bg-slate-800 p-3 rounded-lg rounded-tl-none border border-slate-700 max-w-[85%] self-start shadow-sm">
+    <div id="chat-messages" class="p-4 h-80 overflow-y-auto space-y-3 text-sm flex flex-col" style="color: var(--text);">
+      <div class="p-3 rounded-lg rounded-tl-none border max-w-[85%] self-start shadow-sm" style="background: rgba(184,115,51,0.12); border-color: rgba(184,115,51,0.4);">
         <p>👋 Hey there. I'm RiskBot—my tie is crooked because the 15 frontier models just flagged another massive data scraping vector. How can I help you navigate the corporate deception ledger today?</p>
       </div>
     </div>
 
-    <div class="px-3 py-2 bg-slate-900/80 border-t border-slate-800 flex gap-1.5 overflow-x-auto text-xs">
-      <button onclick="sendPresetPrompt('What is the Power Score?')" class="bg-slate-800 hover:bg-teal-900 text-teal-300 px-2.5 py-1 rounded-full whitespace-nowrap border border-teal-500/30 transition-colors cursor-pointer">⚡ Power Score?</button>
-      <button onclick="sendPresetPrompt('Show me the Kaggle notebook link')" class="bg-slate-800 hover:bg-amber-900 text-amber-300 px-2.5 py-1 rounded-full whitespace-nowrap border border-amber-500/30 transition-colors cursor-pointer">📊 Notebook</button>
-      <button onclick="sendPresetPrompt('Why is pre-review telemetry risky?')" class="bg-slate-800 hover:bg-slate-700 text-gray-300 px-2.5 py-1 rounded-full whitespace-nowrap border border-slate-600 transition-colors cursor-pointer">🔍 Blindspots</button>
+    <div class="px-3 py-2 border-t flex gap-1.5 overflow-x-auto text-xs" style="background: rgba(10,10,10,0.9); border-color: rgba(184,115,51,0.3);">
+      <button onclick="sendPresetPrompt('What is the Power Score?')" class="px-2.5 py-1 rounded-full whitespace-nowrap border transition-colors cursor-pointer" style="background: rgba(184,115,51,0.14); color: var(--heading); border-color: rgba(184,115,51,0.35);">⚡ Power Score?</button>
+      <button onclick="sendPresetPrompt('Show me the Kaggle notebook link')" class="px-2.5 py-1 rounded-full whitespace-nowrap border transition-colors cursor-pointer" style="background: rgba(184,115,51,0.14); color: var(--heading); border-color: rgba(184,115,51,0.35);">📊 Notebook</button>
+      <button onclick="sendPresetPrompt('Why is pre-review telemetry risky?')" class="px-2.5 py-1 rounded-full whitespace-nowrap border transition-colors cursor-pointer" style="background: rgba(184,115,51,0.14); color: var(--heading); border-color: rgba(184,115,51,0.35);">🔍 Blindspots</button>
     </div>
 
-    <div class="p-3 bg-slate-800 border-t border-slate-700 flex gap-2">
-      <input type="text" id="chat-input" placeholder="Ask about models, risks, or datasets..." class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-gray-100 focus:outline-none focus:border-teal-500">
-      <button id="chat-send" class="bg-teal-600 hover:bg-teal-500 text-white px-4 py-2 rounded-lg font-medium transition-colors text-sm cursor-pointer">Send</button>
+    <div class="p-3 border-t flex gap-2" style="background: rgba(17,17,17,0.95); border-color: rgba(184,115,51,0.3);">
+      <input type="text" id="chat-input" placeholder="Ask about models, risks, or datasets..." class="flex-1 rounded-lg px-3 py-2 text-sm focus:outline-none" style="background: rgba(10,10,10,0.95); border: 1px solid rgba(184,115,51,0.4); color: var(--text);">
+      <button id="chat-send" class="copper-btn px-4 py-2 rounded-lg font-medium transition-colors text-sm cursor-pointer">Send</button>
     </div>
   </div>
 </div>
@@ -218,8 +373,11 @@
   function appendMessage(text, sender) {
     const msgDiv = document.createElement('div');
     msgDiv.className = sender === 'user' 
-      ? 'bg-teal-600/90 text-white p-3 rounded-lg rounded-tr-none max-w-[85%] self-end shadow-sm' 
-      : 'bg-slate-800 text-gray-300 p-3 rounded-lg rounded-tl-none border border-slate-700 max-w-[85%] self-start shadow-sm';
+      ? 'p-3 rounded-lg rounded-tr-none max-w-[85%] self-end shadow-sm' 
+      : 'p-3 rounded-lg rounded-tl-none border max-w-[85%] self-start shadow-sm';
+    msgDiv.style.background = sender === 'user' ? 'linear-gradient(135deg, #B87333, #D0A16B)' : 'rgba(184,115,51,0.12)';
+    msgDiv.style.color = sender === 'user' ? '#111111' : 'var(--text)';
+    msgDiv.style.borderColor = 'rgba(184,115,51,0.4)';
     msgDiv.innerHTML = `<p>${text}</p>`;
     chatMessages.appendChild(msgDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -228,8 +386,11 @@
   function createThinkingMessage() {
     const thinkingDiv = document.createElement('div');
     thinkingDiv.id = 'riskbot-thinking';
-    thinkingDiv.className = 'bg-slate-800 text-gray-300 p-3 rounded-lg rounded-tl-none border border-slate-700 max-w-[85%] self-start shadow-sm';
-    thinkingDiv.innerHTML = '<p>🤖 RiskBot is thinking<span class="inline-flex ml-2"><span class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></span><span class="w-2 h-2 bg-teal-400 rounded-full animate-pulse ml-1"></span><span class="w-2 h-2 bg-teal-400 rounded-full animate-pulse ml-1"></span></span></p>';
+    thinkingDiv.className = 'p-3 rounded-lg rounded-tl-none border max-w-[85%] self-start shadow-sm';
+    thinkingDiv.style.background = 'rgba(184,115,51,0.12)';
+    thinkingDiv.style.borderColor = 'rgba(184,115,51,0.4)';
+    thinkingDiv.style.color = 'var(--text)';
+    thinkingDiv.innerHTML = '<p>🤖 RiskBot is thinking<span class="inline-flex ml-2"><span class="w-2 h-2 rounded-full animate-pulse" style="background: #B87333"></span><span class="w-2 h-2 rounded-full animate-pulse ml-1" style="background: #B87333"></span><span class="w-2 h-2 rounded-full animate-pulse ml-1" style="background: #B87333"></span></span></p>';
     chatMessages.appendChild(thinkingDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
     return thinkingDiv;
