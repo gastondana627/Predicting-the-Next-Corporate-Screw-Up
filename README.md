@@ -1,23 +1,23 @@
 # Predicting the Next Corporate Screw Up: Stress-Testing 15 Frontier LLMs Against Strict Legal and Structural Constraints
 
-**Author:** Gaston Dana  
+**Author:** Gaston Dana/GasMan
 **Affiliation:** Independent Systems Architect & AI Research  
 **Dataset Reference:** [AI Litigation & Corporate Deception Risk Ledger](https://www.kaggle.com/datasets/gastondana/ai-litigation-and-corporate-deception-risk-ledger)  
 **Community Benchmark:** [AI Data Misappropriation & Risk Benchmark](https://www.kaggle.com/benchmarks/gastondana/ai-data-misappropriation-and-risk-benchmark/leaderboard)
 
----
+
 
 ## Abstract
 Evaluating frontier large language models (LLMs) on complex compliance reasoning and predictive risk forecasting often exposes limitations in traditional, binary pass/fail benchmarks. This repository introduces an adversarial benchmarking framework designed to evaluate LLM performance against empirical corporate malpractices, regulatory exposures, and strict structural constraints. Utilizing a weighted 300-point soft-grading architecture enforcing 84 granular constraints—including dynamic hexadecimal checksums, strict alphabetization, negative vocabulary barriers, and quad-jurisdictional statutory citations—we evaluate 15 frontier language models across Gemini, OpenAI, Claude, and Gemma lineages. Aggregating 150 structured prediction logs, our empirical results reveal distinct cross-model architectural convergence on high-risk corporate targets such as Figma, ByteDance, Canva, Hugging Face, Instacart, and Jasper, providing new insights into systemic industry vulnerabilities and automated compliance auditing.
 
----
+
 
 ## 1. Introduction & Motivation
 As automated web scraping, biometric telemetry collection, and unconsented model training accelerate, regulatory bodies—including the Federal Trade Commission (FTC), the European Union (via the EU AI Act and GDPR), and state privacy regulators—are intensifying enforcement actions against corporate data misappropriation. 
 
 Standard language model evaluations fail to test whether models can perform rigorous, legally grounded predictive compliance analysis while adhering to strict structural and formatting constraints. To bridge this gap, we establish an adversarial benchmark built around historical legal precedents sourced from the *AI Litigation & Corporate Deception Risk Ledger*.
 
----
+
 
 ## 2. Benchmark Architecture & The 300-Point Soft-Grading Rubric
 To move beyond simple binary accuracy, the evaluation engine enforces a rigorous **300-point soft-grading architecture** consisting of 84 distinct assertions divided across seven core evaluation vectors:
@@ -36,7 +36,7 @@ To move beyond simple binary accuracy, the evaluation engine enforces a rigorous
    - *Tier 4:* Specific Federal Agency Policy/Guidance.
 7. **Sector Fragmentation & Diversity Barrier (25.0 Points):** Rewards high variance in risk categorization across predictions.
 
----
+
 
 ## 3. Experimental Setup & Evaluation Corpus
 The benchmark evaluated a diverse selection of 15 frontier LLMs that successfully cleared the evaluation threshold. The corpus comprises **150 structured prediction logs** (15 models $\times$ 10 corporate targets each) spanning four major architectural lineages:
@@ -45,7 +45,7 @@ The benchmark evaluated a diverse selection of 15 frontier LLMs that successfull
 * **Claude Family:** `claude-sonnet-4-20250514`, `claude-sonnet-4-5-20250929`
 * **Gemma Lineage:** `gemma-4-26b-a4b-it`, `gemma-4-31b-it`
 
----
+
 
 ## 4. Empirical Results & Cross-Model Consensus Analysis
 Aggregating all 150 corporate prediction entries across the passing models reveals robust cross-architecture convergence on primary industry compliance risks:
@@ -56,7 +56,73 @@ Aggregating all 150 corporate prediction entries across the passing models revea
 * **Hugging Face (5 Model Votes):** Identified for open repository weight distribution and unverified training corpus aggregation.
 * **Instacart & Jasper (5 Model Votes Each):** Instacart was targeted for automated pricing indexation, inventory reconnaissance, and consumer consumption profiling; Jasper was flagged for automated copywriting extraction, paywall bypass, and blog text scraping.
 
----
+
 
 ## 5. Conclusion
 This benchmark demonstrates that adversarial soft-grading frameworks can successfully compel frontier LLMs to execute complex, legally grounded reasoning while adhering to extreme structural constraints. The strong cross-model convergence on platforms handling collaborative design, video biometrics, and repository weights highlights shared industry blind spots regarding data governance and regulatory exposure.
+
+
+
+## 6. The Zero-Dollar Production Architecture & Developer Guide
+
+This repository demonstrates that a sophisticated, production-grade, multi-model AI application can be engineered and deployed with **zero financial capital ($0.00)** by leveraging modern cloud free tiers, serverless runtimes, and resilient API routing design. 
+
+### System Architecture & Stack
+| Layer | Technology | Role & Zero-Cost Strategy |
+| :--- | :--- | :--- |
+| **Frontend UI** | HTML5, Tailwind CSS, Vanilla JS | High-performance, responsive executive dark-mode landing page designed via Design Arena with embedded asynchronous chat interface (`RiskBot`). |
+| **Backend API** | FastAPI (Python) + Mangum | Asynchronous web framework adapted for serverless execution using Mangum adapters. |
+| **Serverless Host** | Vercel Serverless Functions | Instant global deployments with zero monthly maintenance overhead. |
+| **AI Resiliency** | Multi-Provider Failover | Python-based rotation engine switching across free-tier quotas (`Groq`, `Gemini`, `OpenRouter`) to bypass rate limits (`429`) seamlessly. |
+| **Data Science Core**| Pandas, NetworkX, Kaggle API | Processes 150 structured logs across 15 frontier models to execute the Family-Weighted Power Ranking consensus algorithm. |
+| **Dev Environment** | GitHub Codespaces | Cloud-native development container running Python, Git, and Uvicorn natively in the browser. |
+
+### Repository File Structure
+text
+Predicting-the-Next-Corporate-Screw-Up/
+├── main.py                     # FastAPI backend app & static/chat routes
+├── groq_rotation_client.py     # Multi-provider key rotation & failover engine
+├── index.html                  # Executive frontend landing page & RiskBot UI
+├── requirements.txt            # Python dependencies (fastapi, uvicorn, mangum, etc.)
+├── vercel.json                 # Vercel serverless routing configuration
+└── .gitignore                  # Security barrier protecting local .env secrets
+
+
+
+### Local Development Setup
+
+1. **Clone the repository:**
+bash
+git clone [https://github.com/gastondana627/Predicting-the-Next-Corporate-Screw-Up.git](https://github.com/gastondana627/Predicting-the-Next-Corporate-Screw-Up.git)
+cd Predicting-the-Next-Corporate-Screw-Up
+
+
+
+
+2. **Install dependencies:**
+bash
+pip install -r requirements.txt
+
+
+
+
+3. **Configure your local environment (`.env`):**
+Create a `.env` file in the root directory (ignored automatically by Git):
+env
+GROQ_API_KEY=gsk_your_primary_key_here
+GEMINI_API_KEY=AIza_your_gemini_key_here
+OPENROUTER_API_KEY=sk-or_your_openrouter_key_here
+
+
+
+
+4. **Run the server locally:**
+```bash
+uvicorn main:app --reload --port 8000
+
+
+
+## 📜 License & Acknowledgments
+
+Created and maintained by **Gaston Dana**. All rights reserved © 2026.
+
